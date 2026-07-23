@@ -1,75 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+  const [count, setCount] = useState(0)
 
-    // Mock data fetching function
-    const fetchProducts = async () => {
-        setLoading(true);
-        setError(false);
-        try {
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            // Simulate an error 30% of the time
-            if (Math.random() < 0.3) {
-                throw new Error("Failed to fetch products");
-            }
-
-            // Simulate fetching some product data
-            const mockProducts = [
-                { id: 1, name: 'Brake Pads', price: 59.99 },
-                { id: 2, name: 'Oil Filter', price: 12.50 },
-                { id: 3, name: 'Spark Plugs', price: 25.00 },
-            ];
-            setProducts(mockProducts);
-        } catch (err) {
-            console.error("Error fetching products:", err);
-            setError(true);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchProducts();
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="App">
-                <h1>Auto Parts Inc.</h1>
-                <p>Loading products...</p>
-            </div>
-        );
-    }
-
-    if (error) {
-        return (
-            <div className="App">
-                <h1>Auto Parts Inc.</h1>
-                <p style={{ color: 'red' }}>Failed to load products. Please try again later.</p>
-            </div>
-        );
-    }
-
-    return (
-        <div className="App">
-            <h1>Auto Parts Inc.</h1>
-            <h2>Available Products:</h2>
-            {products.length > 0 ? (
-                <ul>
-                    {products.map(product => (
-                        <li key={product.id}>{product.name} - ${product.price.toFixed(2)}</li>
-                    ))}
-                </ul>
-            ) : (
-                <p>No products found.</p>
-            )}
-        </div>
-    );
+  return (
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App

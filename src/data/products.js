@@ -1,3 +1,11 @@
+/**
+ * @typedef {object} Product
+ * @property {string} id - The unique identifier for the product.
+ * @property {string} name - The name of the product.
+ * @property {string} description - A detailed description of the product.
+ * @property {number} price - The price of the product.
+ * @property {string} imageUrl - The URL of the product's image.
+ */
 
 export const MOCK_PRODUCTS = [
   {

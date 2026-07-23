@@ -1,17 +1,17 @@
 import React from 'react';
 import { MOCK_PRODUCTS } from './data/products';
 import ProductGrid from './components/ProductGrid';
-import Footer from './components/Footer'; // Import the Footer component
-import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header'; // Import the Header component
 
 function App() {
   return (
-    <div className="App">
-      <div className="text-center p-4">
-        <h1 className="text-4xl font-bold text-gray-800">Auto Parts Inc.</h1>
-      </div>
-      <ProductGrid products={MOCK_PRODUCTS} />
-      <Footer /> {/* Render the Footer component */}
+    <div className="min-h-screen flex flex-col">
+      <Header /> {/* Render the Header component at the top */}
+      <main className="flex-grow container mx-auto p-4">
+        <ProductGrid products={MOCK_PRODUCTS} />
+      </main>
+      <Footer />
     </div>
   );
 }
